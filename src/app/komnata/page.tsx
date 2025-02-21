@@ -20,7 +20,7 @@ const Komnata = () => {
       autoPlay
       playsInline
       muted
-    ></video>
+    />
   )
 }
 
