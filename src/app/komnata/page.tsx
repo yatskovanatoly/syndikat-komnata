@@ -17,7 +17,7 @@ const Komnata = () => {
   if (!randomFx) return null
   return (
     <>
-      {loaded && <div className="bg-green-300 h-full w-full inset-0 fixed" />}
+      {loaded && <div className="bg-green-300 h-full w-full inset-0 absolute" />}
       <video
         ref={ref}
         src="/eta_komnata_vid_1.mp4"
