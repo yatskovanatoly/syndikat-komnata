@@ -7,25 +7,27 @@ const Komnata = () => {
 
   useEffect(() => {
     const video = ref.current
+    setRandomFx(getRandomFx())
     if (video) {
-      setRandomFx(getRandomFx())
       video.playbackRate = 0.5
     }
   }, [])
 
+  if (!randomFx) return null
   return (
     <>
-      <div className="bg-green-300 h-wull w-full inset-0 fixed" />
+      <div className="bg-green-300 h-full w-full inset-0 fixed" />
       <video
         ref={ref}
         src="/eta_komnata_vid_1.mp4"
         className={`object-cover h-full w-full ${randomFx}`}
         onClick={() => setRandomFx(getRandomFx(randomFx))}
-        poster="/2025-02-13 19.06.42.jpg"
+        preload='metadata'
         loop
         autoPlay
         playsInline
         muted
+        onLoadedData={() => console.log('awdaw')}
       />
     </>
   )
