@@ -27,7 +27,6 @@ const Komnata = () => {
         autoPlay
         playsInline
         muted
-        onLoadedData={() => console.log('awdaw')}
       />
     </>
   )
