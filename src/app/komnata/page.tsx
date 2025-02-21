@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react'
 const Komnata = () => {
   const ref = useRef<HTMLVideoElement>(null)
   const [randomFx, setRandomFx] = useState('')
+  const [loaded, setLoaded] = useState(false)
 
   useEffect(() => {
     const video = ref.current
@@ -16,17 +17,18 @@ const Komnata = () => {
   if (!randomFx) return null
   return (
     <>
-      <div className="bg-green-300 h-full w-full inset-0 fixed" />
+      {loaded && <div className="bg-green-300 h-full w-full inset-0 fixed" />}
       <video
         ref={ref}
         src="/eta_komnata_vid_1.mp4"
         className={`object-cover h-full w-full ${randomFx}`}
         onClick={() => setRandomFx(getRandomFx(randomFx))}
-        preload='metadata'
+        preload="metadata"
         loop
         autoPlay
         playsInline
         muted
+        onLoadedData={() => setLoaded(true)}
       />
     </>
   )
