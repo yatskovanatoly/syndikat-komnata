@@ -3,12 +3,10 @@ import { useEffect, useRef, useState } from 'react'
 
 const Komnata = () => {
   const ref = useRef<HTMLVideoElement>(null)
-  const [randomFx, setRandomFx] = useState('')
+  const [randomFx, setRandomFx] = useState<string | undefined>(undefined)
 
   useEffect(() => {
     const video = ref.current
-    const newFx = getRandomFx()
-    setRandomFx(newFx)
     if (video) {
       video.playbackRate = 0.5
     }
@@ -16,7 +14,7 @@ const Komnata = () => {
 
   return (
     <>
-      <div className="bg-green-300 h-full w-full inset-0 absolute" />
+      {randomFx && <div className="bg-green-300 h-full w-full inset-0 absolute" />}
       <video
         ref={ref}
         src="/eta_komnata_vid_1.mp4"
@@ -27,14 +25,13 @@ const Komnata = () => {
         autoPlay
         playsInline
         muted
-        // onLoadStart={() => setLoadedStart(true)}
+        onLoadedData={() => setRandomFx(getRandomFx(randomFx))}
       />
     </>
   )
 }
 
 const fxs = [
-  'mix-blend-exclusion',
   'mix-blend-multiply',
   'mix-blend-darken',
   'mix-blend-hard-light',
