@@ -11,7 +11,7 @@ const nextConfig: NextConfig = {
             value: 'komnata.syndikat.moscow',
           },
         ],
-        destination: '/komnata/:path*',
+        destination: '/komnata',
       },
     ]
   },
