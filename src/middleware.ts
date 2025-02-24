@@ -2,10 +2,10 @@ import type { NextRequest } from 'next/server'
 import { NextResponse } from 'next/server'
 
 const PUBLIC_FILE = /\.(.*)$/
-export const BASE_PATH =
+export const DOMAIN =
   process.env.NODE_ENV === 'production'
     ? process.env?.NEXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL
-    : 'sndkt.site'
+    : process.env?.LOCALHOST
 
 export async function middleware(req: NextRequest) {
   const url = req.nextUrl.clone()
@@ -29,7 +29,7 @@ const getValidSubdomain = (host?: string | null) => {
   if (host && host.includes('.')) {
     const candidate = host.split('.')[0]
 
-    if (host === BASE_PATH) return
+    if (host === DOMAIN) return
     if (candidate && !candidate.includes('localhost')) {
       subdomain = candidate
     }
