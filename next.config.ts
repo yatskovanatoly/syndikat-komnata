@@ -35,6 +35,6 @@ const nextConfig: NextConfig = {
 
 const protocol = process.env.NODE_ENV === 'production' ? 'https://' : 'http://'
 const getDestination = (path: string) => `${protocol}${path}.${DOMAIN}`
-const origin = `${protocol}.${DOMAIN}`
+const origin = `${protocol}${DOMAIN}`
 
 export default nextConfig
