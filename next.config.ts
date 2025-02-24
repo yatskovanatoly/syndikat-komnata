@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
-        source: '/komnata',
+        source: '/komnata/:path*',
         destination: getDestination('komnata'),
         permanent: true,
       },

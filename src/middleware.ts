@@ -10,6 +10,7 @@ export const DOMAIN =
 export async function middleware(req: NextRequest) {
   const url = req.nextUrl.clone()
 
+  // Allow public files and Next.js assets
   if (PUBLIC_FILE.test(url.pathname) || url.pathname.includes('_next')) return
 
   const host = req.headers.get('host')
@@ -18,9 +19,19 @@ export async function middleware(req: NextRequest) {
     url.pathname = `/${subdomain}${url.pathname}`
   }
 
-  return NextResponse.rewrite(url)
+  // Handle CORS
+  const response = NextResponse.rewrite(url)
+  setCorsHeaders(response, req)
+
+  // Handle preflight (OPTIONS) requests
+  if (req.method === 'OPTIONS') {
+    return new NextResponse(null, { status: 204, headers: response.headers })
+  }
+
+  return response
 }
 
+// Extract subdomain from the host
 const getValidSubdomain = (host?: string | null) => {
   let subdomain: string | null = null
   if (!host && typeof window !== 'undefined') {
@@ -35,4 +46,24 @@ const getValidSubdomain = (host?: string | null) => {
     }
   }
   return subdomain
+}
+
+// Set CORS headers
+const setCorsHeaders = (response: NextResponse, req: NextRequest) => {
+  const origin = req.headers.get('origin')
+  if (
+    origin &&
+    (origin.endsWith(`.${DOMAIN}`) || origin === `https://${DOMAIN}`)
+  ) {
+    response.headers.set('Access-Control-Allow-Origin', origin)
+    response.headers.set(
+      'Access-Control-Allow-Methods',
+      'GET, POST, OPTIONS, PUT, DELETE'
+    )
+    response.headers.set(
+      'Access-Control-Allow-Headers',
+      'Content-Type, Authorization'
+    )
+    response.headers.set('Access-Control-Allow-Credentials', 'true')
+  }
 }
