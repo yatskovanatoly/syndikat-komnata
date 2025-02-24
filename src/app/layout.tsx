@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
-import { Analytics } from "@vercel/analytics/react"
+import { Analytics } from '@vercel/analytics/react'
 import './globals.css'
 
 export default function RootLayout({
@@ -14,7 +14,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
-        <Analytics/>
+        <Analytics />
       </body>
     </html>
   )
@@ -32,12 +32,12 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: 'московский музыкальный синдикат',
-  // openGraph: {
-  //   type: "website",
-  //   title: "московский музыкальный синдикат",
-  //   siteName: "московский музыкальный синдикат",
-  //   images: [{
-  //     url: "https://example.com/og.png",
-  //   }],
-  // }
+  openGraph: {
+    type: 'website',
+    title: 'эта комната • московский музыкальный синдикат',
+    siteName: 'московский музыкальный синдикат',
+    // images: [{
+    //   url: "https://example.com/og.png",
+    // }],
+  },
 }
