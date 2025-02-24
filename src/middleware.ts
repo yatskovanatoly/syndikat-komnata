@@ -2,7 +2,7 @@ import type { NextRequest } from 'next/server'
 import { NextResponse } from 'next/server'
 
 const PUBLIC_FILE = /\.(.*)$/
-const BASE_PATH =
+export const BASE_PATH =
   process.env.NODE_ENV === 'production'
     ? process.env?.NEXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL
     : 'sndkt.site'
