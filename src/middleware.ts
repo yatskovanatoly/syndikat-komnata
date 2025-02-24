@@ -62,7 +62,7 @@ const setCorsHeaders = (response: NextResponse, req: NextRequest) => {
     )
     response.headers.set(
       'Access-Control-Allow-Headers',
-      'Content-Type, Authorization'
+      'Content-Type, Authorization, RSC'
     )
     response.headers.set('Access-Control-Allow-Credentials', 'true')
   }
