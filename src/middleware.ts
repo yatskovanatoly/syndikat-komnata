@@ -51,6 +51,7 @@ const getValidSubdomain = (host?: string | null) => {
 // Set CORS headers
 const setCorsHeaders = (response: NextResponse, req: NextRequest) => {
   const origin = req.headers.get('origin')
+
   if (
     origin &&
     (origin.endsWith(`.${DOMAIN}`) || origin === `https://${DOMAIN}`)
@@ -62,7 +63,7 @@ const setCorsHeaders = (response: NextResponse, req: NextRequest) => {
     )
     response.headers.set(
       'Access-Control-Allow-Headers',
-      'Content-Type, Authorization, RSC'
+      'Content-Type, Authorization, RSC, Next-Router-Prefetch'
     )
     response.headers.set('Access-Control-Allow-Credentials', 'true')
   }
