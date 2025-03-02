@@ -1,15 +1,19 @@
+import { NextResponse } from 'next/server'
 import { Dropbox } from 'dropbox'
 
-const DROPBOX_ACCESS_TOKEN = process.env.NEXT_PUBLIC_DROPBOX_ACCESS_TOKEN
+const DROPBOX_ACCESS_TOKEN = process.env.DROPBOX_ACCESS_TOKEN
 
-export async function getDropboxFiles() {
+export async function GET() {
   if (!DROPBOX_ACCESS_TOKEN) {
     console.error('🚨 Missing Dropbox Access Token in environment variables.')
-    return
+    return NextResponse.json(
+      { error: 'Missing Dropbox Access Token' },
+      { status: 500 }
+    )
   }
 
   try {
-    const dbx = new Dropbox({ accessToken: DROPBOX_ACCESS_TOKEN })
+    const dbx = new Dropbox({ accessToken: DROPBOX_ACCESS_TOKEN, fetch })
     const response = await dbx.filesListFolder({ path: '' })
 
     const files = await Promise.all(
@@ -29,10 +33,12 @@ export async function getDropboxFiles() {
       })
     )
 
-    return files
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  } catch (error: any) {
+    return NextResponse.json(files.filter(Boolean)) // ✅ Return valid JSON response
+  } catch (error) {
     console.error('🚨 Dropbox API Error:', error)
-    return
+    return NextResponse.json(
+      { error: 'Failed to fetch Dropbox files' },
+      { status: 500 }
+    )
   }
 }

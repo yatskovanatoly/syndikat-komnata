@@ -1,10 +1,9 @@
-import { getDropboxFiles } from './dropbox'
-
 export const fetchMedia = async (handleMedia: (url?: any) => void) => {
   try {
-    const data = await getDropboxFiles()
+    const res = await fetch('/api/dropbox')
+    const data = await res.json()
 
-    if (!data || data.length === 0) {
+    if (!Array.isArray(data) || data.length === 0) {
       console.warn('No media files available')
       return
     }
