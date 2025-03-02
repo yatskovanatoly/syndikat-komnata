@@ -1,17 +1,23 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import { fetchMedia } from '../lib/fetchMedia'
 
 const Komnata = () => {
   const ref = useRef<HTMLVideoElement>(null)
   const [randomFx, setRandomFx] = useState<string | undefined>(undefined)
+  const [src, setSrc] = useState(undefined)
+
+  useEffect(() => {
+    fetchMedia(setSrc)
+  }, [])
 
   useEffect(() => {
     const video = ref.current
-    if (video) {
+    if (video && src) {
       video.playbackRate = 0.5
     }
-  }, [])
+  }, [src])
 
   return (
     <>
@@ -20,7 +26,7 @@ const Komnata = () => {
       )}
       <video
         ref={ref}
-        src="/eta_komnata_vid_1.mp4"
+        src={src}
         className={`object-cover h-full w-full ${randomFx}`}
         onClick={() => setRandomFx(getRandomFx(randomFx))}
         preload="metadata"
