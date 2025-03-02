@@ -33,7 +33,7 @@ export async function GET() {
       })
     )
 
-    return NextResponse.json(files.filter(Boolean)) // ✅ Return valid JSON response
+    return NextResponse.json(files.filter(Boolean))
   } catch (error) {
     console.error('🚨 Dropbox API Error:', error)
     return NextResponse.json(

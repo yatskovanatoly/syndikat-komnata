@@ -28,13 +28,13 @@ const Komnata = () => {
         ref={ref}
         src={src}
         className={`object-cover h-full w-full ${randomFx}`}
-        onClick={() => setRandomFx(getRandomFx(randomFx))}
+        onClick={() => randomFx && setRandomFx(getRandomFx(randomFx))}
         preload="metadata"
         loop
         autoPlay
         playsInline
         muted
-        onLoadedData={() => setRandomFx(getRandomFx(randomFx))}
+        onLoadedData={() => setRandomFx(getRandomFx())}
       />
     </>
   )
