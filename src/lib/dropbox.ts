@@ -1,7 +1,8 @@
 import { Dropbox } from 'dropbox'
-import { NextResponse } from 'next/server'
 
-const DROPBOX_ACCESS_TOKEN = process.env.NEXT_PUBLIC_DROPBOX_ACCESS_TOKEN
+const DROPBOX_ACCESS_TOKEN =
+  process.env.NEXT_PUBLIC_DROPBOX_ACCESS_TOKEN ||
+  process.env.DROPBOX_ACCESS_TOKEN
 
 export async function getDropboxFiles() {
   if (!DROPBOX_ACCESS_TOKEN) {
