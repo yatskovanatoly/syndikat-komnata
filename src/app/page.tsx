@@ -1,15 +1,14 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import { fetchMedia } from '../lib/fetchMedia'
 
 const Komnata = () => {
   const ref = useRef<HTMLVideoElement>(null)
-  const [randomFx, setRandomFx] = useState<string | undefined>(undefined)
-  const [src, setSrc] = useState(undefined)
+  const [src, setSrc] = useState<string | undefined>(undefined)
+  const [loaded, setLoaded] = useState(false)
 
   useEffect(() => {
-    fetchMedia(setSrc)
+    setSrc(getRandomVideoSrc(src))
   }, [])
 
   useEffect(() => {
@@ -19,32 +18,36 @@ const Komnata = () => {
     }
   }, [src])
 
+  const onEnded = () => {
+    setLoaded(false)
+    setSrc(getRandomVideoSrc(src))
+  }
+
   return (
     <>
-      {randomFx && (
+      {loaded && (
         <div className="bg-green-300 h-full w-full inset-0 absolute" />
       )}
       <video
         ref={ref}
         src={src}
-        className={`object-cover h-full w-full ${randomFx}`}
-        onClick={() => randomFx && setRandomFx(getRandomFx(randomFx))}
+        className={`object-cover h-full w-full mix-blend-multiply`}
+        onClick={onEnded}
+        onPlay={() => setLoaded(true)}
+        onEnded={onEnded}
         preload="metadata"
-        loop
         autoPlay
         playsInline
         muted
-        onLoadedData={() => setRandomFx(getRandomFx())}
       />
     </>
   )
 }
 
-const fxs = ['mix-blend-multiply', 'mix-blend-darken', 'mix-blend-hard-light']
-
-const getRandomFx = (currentFx?: string) =>
-  fxs.filter((fx) => fx !== currentFx)[
-    Math.floor(Math.random() * (currentFx ? fxs.length - 1 : fxs.length))
-  ]
+const getRandomVideoSrc = (prev: string | undefined) => {
+  const next = `/eta_komnata_vid_${Math.floor(Math.random() * 10 + 1)}.mp4`
+  if (prev === next) return getRandomVideoSrc(prev)
+  return next
+}
 
 export default Komnata
