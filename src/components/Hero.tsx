@@ -60,13 +60,6 @@ const Hero = () => {
   const handleVisibilityChange = () =>
     setVisible(document.visibilityState === 'visible')
 
-  useEffect(() => {
-    window.addEventListener('visibilitychange', handleVisibilityChange)
-
-    return () =>
-      window.removeEventListener('visibilitychange', handleVisibilityChange)
-  }, [])
-
   return (
     <div className="relative w-full h-full">
       {visible && <div className="bg-green-300 absolute inset-0" />}
@@ -86,6 +79,7 @@ const Hero = () => {
             muted
             playsInline
             onPlaying={handleVisibilityChange}
+            onPause={handleVisibilityChange}
             onClick={handleVideoEnd}
             onEnded={handleVideoEnd}
           />
