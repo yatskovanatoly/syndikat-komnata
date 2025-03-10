@@ -1,0 +1,10 @@
+{
+  "title": "эта комната",
+  "ageRestriction": "16+",
+  "Description": {
+    "skeleton": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sodales nisl vitae condimentum venenatis. Suspendisse felis purus, molestie condimentum euismod ut, auctor quis tortor. Quisque non ipsum varius, auctor libero sit amet, consequat massa. In hac habitasse platea dictumst. Vestibulum blandit sagittis odio. Duis laoreet ac risus vitae vulputate. Integer sed odio vitae urna lobortis efficitur vitae ac metus. Nulla ac nisi sagittis, aliquam urna vel, consectetur purus. Aliquam eu rutrum mi. Vestibulum suscipit sapien non lacus dapibus, sit amet sollicitudin dolor mattis. Vestibulum eget sapien justo. In tincidunt luctus nibh eu varius. Cras molestie nulla et leo vestibulum interdum.\n\nQuisque risus turpis, venenatis eu gravida eu, egestas ac neque. Suspendisse facilisis, nibh et tincidunt congue, eros nisi molestie sem, a mattis mauris sapien vel arcu. Aliquam venenatis at justo sed fermentum. Cras vehicula varius quam. Vestibulum dolor augue, faucibus eget consequat nec, sagittis eu tellus. Maecenas posuere rhoncus lectus, porttitor finibus erat lobortis quis. Mauris lacinia enim non ornare varius. Curabitur ligula lectus, ullamcorper a magna tincidunt, consectetur laoreet elit. Ut hendrerit quam non laoreet sodales. Fusce quis lacus eu ipsum tincidunt cursus at sit amet leo.",
+    "error": "# Ой...\nне удалось загрузить описание"
+  },
+  "buyTicket": "Купить билет",
+  "footer": "developed @ mkcode.org"
+}

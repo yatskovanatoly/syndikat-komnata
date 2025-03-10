@@ -1,9 +1,11 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 
 const BuyTicket = () => {
   const [visible, setVisible] = useState(false)
+  const t = useTranslations()
 
   return (
     <>
@@ -11,7 +13,7 @@ const BuyTicket = () => {
         className="bg-none text-4xl border-4 p-4 cursor-pointer hover:bg-green-300/30 transition-all duration-200 pointer-events-auto"
         onClick={() => setVisible(true)}
       >
-        Купить билет
+        {t('buyTicket')}
       </button>
       {visible && (
         <>
