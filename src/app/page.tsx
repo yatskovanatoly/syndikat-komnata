@@ -16,13 +16,15 @@ const Page = () => {
           </h1>
         </section>
         <section className="min-h-dvh snap-start flex flex-col lg:flex-row items-center gap-4">
-          <MarkdownViewer />
-          <section className="h-fit snap-end snap-always scroll-mb-4 flex flex-col gap-4 items-center justify-center p-4">
+          <div className="snap-end snap-always scroll-mb-4 w-full lg:w-fit max-w-[1000px]">
+            <MarkdownViewer />
+          </div>
+          <div className="h-fit snap-end snap-always scroll-mb-4 flex grow flex-col gap-4 items-center justify-center p-4">
             <BuyTicket />
             <p className="text-8xl font-serif">16+</p>
-          </section>
+          </div>
         </section>
-        <section className="h-fit snap-start py-4">
+        <section className="h-fit snap-start py-2">
           <Footer />
         </section>
       </main>
