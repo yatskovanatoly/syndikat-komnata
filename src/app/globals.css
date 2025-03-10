@@ -1,19 +1,6 @@
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
 
-/* :root {
-  --background: #ffffff;
-  --foreground: #171717;
-} */
-
-/* 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-} */
-
 :root {
   --background: #0a0a0a;
   --foreground: #ededed;
@@ -30,3 +17,16 @@ body {
 .prose {
   user-select: text;
 }
+
+/* :root {
+  --background: #ffffff;
+  --foreground: #171717;
+} */
+
+/* 
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+} */
