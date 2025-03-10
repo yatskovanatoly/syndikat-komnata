@@ -2,13 +2,13 @@
 
 import { ObjectList } from 'aws-sdk/clients/s3'
 import { useEffect, useRef, useState } from 'react'
+import LoadingElement from './Loading'
 
 const Hero = () => {
   const [videos, setVideos] = useState<VideoItem[]>([])
   const [current, setCurrent] = useState<VideoItem | null>(null)
   const [next, setNext] = useState<VideoItem | null>(null)
   const [activeIndex, setActiveIndex] = useState<0 | 1>(0)
-  const [visible, setVisible] = useState(false)
 
   const videoRefs = useRef<[HTMLVideoElement | null, HTMLVideoElement | null]>([
     null,
@@ -32,9 +32,9 @@ const Hero = () => {
     const currentRef = videoRefs.current[activeIndex]
     if (currentRef) {
       currentRef.playbackRate = 0.5
-      currentRef.play()
+      currentRef.play().catch(console.warn)
     }
-  }, [current])
+  }, [activeIndex, current])
 
   const handleVideoEnd = () => {
     if (!current || !next || videos.length < 1) return
@@ -50,37 +50,33 @@ const Hero = () => {
     const hiddenRef = videoRefs.current[hiddenIndex]
     if (hiddenRef) {
       if (upcoming) {
-        hiddenRef.src = `https://${HOST}/${upcoming.Key}`
         hiddenRef.load()
         hiddenRef.playbackRate = 0.5
       }
     }
   }
 
-  const handleVisibilityChange = () =>
-    setVisible(document.visibilityState === 'visible')
-
+  if (!videos || !current || !next) return <LoadingElement />
   return (
-    <div className="relative w-full h-full">
-      {visible && <div className="bg-green-300 absolute inset-0" />}
+    <div className="fixed inset-0 -z-10">
       {[0, 1].map((i) => {
-        if (!current || !next) return null
         const key = i === activeIndex ? current.Key : next.Key
         return (
           <video
             key={i}
             ref={(el) => {
               videoRefs.current[i] = el
+              if (el && i !== activeIndex) {
+                el.load()
+              }
             }}
-            className={`absolute inset-0 w-full h-full object-cover mix-blend-multiply brightness-150 contrast-75 ${
-              i === activeIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
+            className={`absolute inset-0 h-full object-cover brightness-150 contrast-75 ${
+              i === activeIndex ? 'opacity-100' : 'opacity-0'
             }`}
             src={`https://${HOST}/${key}`}
+            preload="auto"
             muted
             playsInline
-            onPlaying={handleVisibilityChange}
-            onPause={handleVisibilityChange}
-            onClick={handleVideoEnd}
             onEnded={handleVideoEnd}
           />
         )
