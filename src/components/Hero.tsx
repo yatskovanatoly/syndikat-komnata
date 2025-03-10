@@ -87,7 +87,7 @@ const Hero = () => {
 
 const pickRandom = (
   list: VideoItem[],
-  excludeKey?: string | null
+  excludeKey?: string | null,
 ): VideoItem => {
   if (list.length === 1) return list[0]
 

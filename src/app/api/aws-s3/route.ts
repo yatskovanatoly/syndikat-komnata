@@ -30,7 +30,7 @@ export async function GET() {
     console.error(error)
     return NextResponse.json(
       { error: 'Failed to list objects' },
-      { status: 500 }
+      { status: 500 },
     )
   }
 }

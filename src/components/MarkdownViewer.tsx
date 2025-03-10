@@ -15,7 +15,7 @@ const MarkdownViewer = () => {
 
 const MarkdownContent = async () => {
   const description = await getDescription(
-    process.env.NEXT_PUBLIC_GITHUB_DESCRIPTION || ''
+    process.env.NEXT_PUBLIC_GITHUB_DESCRIPTION || '',
   )
   return (
     <Markdown
