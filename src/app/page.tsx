@@ -17,7 +17,7 @@ const Page = async () => {
           </h1>
         </section>
         <section className="min-h-dvh snap-start snap-always scroll-mt-4 flex">
-          <div className="grow flex flex-wrap justify-start items-center w-full gap-4">
+          <div className="grow flex flex-wrap justify-start h-fit items-center w-full gap-4">
             <div className="w-full max-w-screen-sm self-start">
               <MarkdownViewer />
             </div>
