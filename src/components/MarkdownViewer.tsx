@@ -4,7 +4,7 @@ import MarkdownContent from './MarkdownContent'
 
 const MarkdownViewer = () => {
   return (
-    <div className="prose lg:prose-xl prose-invert w-full bg-white/10 rounded-2xl p-4 sm:p-6 backdrop-blur-3xl">
+    <div className="prose lg:prose-xl prose-invert min-w-full bg-white/10 rounded-2xl p-4 sm:p-6 backdrop-blur-3xl">
       <Suspense fallback={<Skeleton />}>
         <MarkdownContent />
       </Suspense>
