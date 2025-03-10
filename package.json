@@ -11,13 +11,16 @@
     "format": "bunx prettier . -w"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.758.0",
     "@next/env": "^15.2.0",
     "@tailwindcss/postcss": "^4.0.6",
     "@vercel/analytics": "^1.5.0",
     "aws-sdk": "^2.1692.0",
     "next": "15.1.7",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "react-markdown": "^10.1.0",
+    "remark-gfm": "^4.0.1"
   },
   "devDependencies": {
     "typescript": "^5",
