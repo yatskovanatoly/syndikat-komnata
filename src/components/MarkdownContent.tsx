@@ -5,6 +5,7 @@ import remarkGfm from 'remark-gfm'
 const MarkdownContent = async () => {
   const description = await getDescription(url)
   const commonStyles = 'font-bold font-serif mb-[calc(var(--spacing)*4)]'
+
   return (
     <Markdown
       components={{
@@ -29,6 +30,7 @@ const getDescription = async (url: string) => {
     .catch((error) => {
       console.error('Markdown fetch error:', error)
     })
+  
   if (!res) return t('Description.error')
   return res
 }

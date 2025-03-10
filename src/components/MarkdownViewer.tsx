@@ -2,15 +2,13 @@ import { getTranslations } from 'next-intl/server'
 import { Suspense } from 'react'
 import MarkdownContent from './MarkdownContent'
 
-const MarkdownViewer = () => {
-  return (
-    <div className="prose lg:prose-xl prose-invert min-w-full bg-white/10 rounded-2xl p-4 sm:p-6 backdrop-blur-3xl">
-      <Suspense fallback={<Skeleton />}>
-        <MarkdownContent />
-      </Suspense>
-    </div>
-  )
-}
+const MarkdownViewer = () => (
+  <div className="prose lg:prose-xl prose-invert min-w-full bg-white/10 rounded-2xl p-4 sm:p-6 backdrop-blur-3xl">
+    <Suspense fallback={<Skeleton />}>
+      <MarkdownContent />
+    </Suspense>
+  </div>
+)
 
 const Skeleton = async () => {
   const t = await getTranslations()
