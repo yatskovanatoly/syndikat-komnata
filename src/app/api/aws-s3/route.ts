@@ -1,4 +1,3 @@
-import AWS from 'aws-sdk'
 import { S3 } from '@aws-sdk/client-s3'
 import { NextResponse } from 'next/server'
 
@@ -14,11 +13,11 @@ export async function GET() {
     const s3 = new S3({
       endpoint: 'https://storage.yandexcloud.net',
       region: 'ru-central1',
-
-      // The key s3ForcePathStyle is renamed to forcePathStyle.
       forcePathStyle: true,
-
-      credentials: new AWS.Credentials(ACCESS_ID, SECRET),
+      credentials: {
+        accessKeyId: ACCESS_ID,
+        secretAccessKey: SECRET,
+      },
     })
 
     const response = await s3.listObjectsV2({
@@ -30,7 +29,7 @@ export async function GET() {
     console.error(error)
     return NextResponse.json(
       { error: 'Failed to list objects' },
-      { status: 500 },
+      { status: 500 }
     )
   }
 }
