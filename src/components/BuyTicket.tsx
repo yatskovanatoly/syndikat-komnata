@@ -31,8 +31,10 @@ const BuyTicket = () => {
 const QTicketIframe = () => (
   <iframe
     className="w-[85%] h-[85%] rounded-2xl fixed inset-0 m-auto z-50"
-    src="https://qtickets.ru/event/156681?site_url=https%3A%2F%2Fmoscow.qtickets.events%2F156681-eta-komnata"
+    src={ticketsUrl}
   />
 )
+
+const ticketsUrl = `https://${process.env.NEXT_PUBLIC_TICKETS}`
 
 export default BuyTicket
