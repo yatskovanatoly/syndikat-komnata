@@ -35,6 +35,4 @@ const getDescription = async (url: string) => {
 
 const url = `https://${process.env.NEXT_PUBLIC_DESCRIPTION}`
 
-console.log(url)
-
 export default MarkdownContent
