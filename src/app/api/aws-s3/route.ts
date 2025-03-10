@@ -22,9 +22,8 @@ export async function GET() {
       })
       .promise()
 
-    console.log('Objects:', response.Contents)
     return NextResponse.json(response.Contents)
   } catch (error) {
-    console.log(error)
+    console.error(error)
   }
 }
