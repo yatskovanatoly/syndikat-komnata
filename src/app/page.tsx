@@ -10,7 +10,7 @@ const Page = async () => {
   return (
     <div className="flex flex-col h-dvh">
       <Hero />
-      <main className="flex-1 overflow-y-auto snap-y snap-mandatory px-4">
+      <main className="flex-1 overflow-y-auto sm:snap-y sm:snap-mandatory px-4">
         <section className="h-dvh flex flex-col justify-end snap-end max-w-screen-sm w-full py-4 ">
           <h1 className="text-7xl sm:text-9xl border-4 px-2 snap-start snap-always scroll-mt-4">
             {t('title')}
