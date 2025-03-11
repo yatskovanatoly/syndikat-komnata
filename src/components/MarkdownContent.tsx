@@ -25,7 +25,7 @@ const MarkdownContent = async () => {
 
 const getDescription = async (url: string) => {
   const t = await getTranslations()
-  const res = await fetch(url)
+  const res = await fetch(url, { cache: 'no-cache' })
     .then((res) => res.text())
     .catch((error) => {
       console.error('Markdown fetch error:', error)
