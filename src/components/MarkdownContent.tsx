@@ -1,5 +1,6 @@
 import { getTranslations } from 'next-intl/server'
 import Markdown from 'react-markdown'
+import rehypeRaw from 'rehype-raw'
 import remarkGfm from 'remark-gfm'
 
 const MarkdownContent = async () => {
@@ -17,6 +18,8 @@ const MarkdownContent = async () => {
         h3: (props) => <h3 className={`text-xl ${commonStyles}`} {...props} />,
       }}
       remarkPlugins={[remarkGfm]}
+      rehypePlugins={[rehypeRaw]}
+      remarkRehypeOptions={{ allowDangerousHtml: true }}
     >
       {description}
     </Markdown>
@@ -30,7 +33,7 @@ const getDescription = async (url: string) => {
     .catch((error) => {
       console.error('Markdown fetch error:', error)
     })
-  
+
   if (!res) return t('Description.error')
   return res
 }
