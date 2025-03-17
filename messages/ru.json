@@ -6,5 +6,6 @@
     "error": "# Ой...\nне удалось загрузить описание. \nможет попробуете перезагрузить страницу?"
   },
   "buyTicket": "Купить билет",
-  "footer": "developed @ mkcode.org"
+  "footer": "developed @ mkcode.org",
+  "date": "16 апреля"
 }
