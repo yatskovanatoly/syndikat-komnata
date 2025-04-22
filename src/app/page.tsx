@@ -1,4 +1,3 @@
-import BuyTicket from '@/components/BuyTicket'
 import Footer from '@/components/Footer'
 import Hero from '@/components/Hero'
 import MarkdownViewer from '@/components/MarkdownViewer'
@@ -14,7 +13,7 @@ const Page = async () => {
         <section className="h-dvh flex flex-col justify-end  snap-end max-w-screen-sm w-full py-4 ">
           <h1 className="text-7xl sm:text-9xl border-4 relative px-2 snap-start snap-always scroll-mt-4">
             {t('title')}
-            <div className='absolute right-4 top-4 text-2xl sm:text-4xl'>{t('date')}</div>
+            {/* <div className='absolute right-4 top-4 text-2xl sm:text-4xl'>{t('date')}</div> */}
           </h1>
         </section>
         <section className="min-h-dvh snap-start snap-always scroll-mt-4 flex">
@@ -23,8 +22,8 @@ const Page = async () => {
               <MarkdownViewer />
             </div>
             <div className="grow flex flex-col gap-4 justify-center items-center p-4">
-              <BuyTicket />
-              <p className="text-8xl font-serif">{t('ageRestriction')}</p>
+              {/* <BuyTicket />
+              <p className="text-8xl font-serif">{t('ageRestriction')}</p> */}
             </div>
           </div>
         </section>
